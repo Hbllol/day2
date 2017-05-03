@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{padding: 0;margin: 0;list-style: none;}
+			#box{
+				width:900px;
+				height: 300px;
+				position: relative;	
+				margin: 50px auto;
+				overflow: hidden;
+				
+		    }
+		    #box ul li img{
+		    	width:500px;
+				height: 300px;
+		    }
+			#box ul li{
+				
+				position: absolute;
+			}
+			#box ul li.img1{
+				left: 0px;
+			}
+			#box ul li.img2{
+				left: 150px;
+				
+			}
+			#box ul li.img3{
+				left: 300px;
+				
+			}
+			#box ul li.img4{
+				left: 450px;
+				
+			}
+			#box ul li.img5{
+				left: 600px;
+				
+			}
+			#box ul li.img6{
+				left: 750px;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+			
+			    <li class="img1"><a href="#"><img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs/jiaoben266/images/01.jpg"/></a></li>
+				<li class="img2"><a href="#"><img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs/jiaoben266/images/02.jpg"/></a></li>
+				<li class="img3"><a href="#"><img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs/jiaoben266/images/03.jpg"/></a></li>
+				<li class="img4"><a href="#"><img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs/jiaoben266/images/04.jpg"/></a></li>
+				<li class="img5"><a href="#"><img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs/jiaoben266/images/05.jpg"/></a></li>
+				<li class="img6"><a href="#"><img src="http://demo.sc.chinaz.com/Files/DownLoad/webjs/jiaoben266/images/06.jpg"/></a></li>
+
+			
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+			var lefts;
+			var idx;
+			var imgL; 
+			var imgR;
+		$("li").each(function(){
+            $(this).mouseenter(function(e){
+            	idx=$(this).index();
+            	imgL="li:lt(" + idx + ")";
+            	imgR="li:gt(" + idx + ")";
+            	lefts = idx * 80;
+            	$(this).stop(true).animate({"left" : idx * 80}, 1000);
+            	$(imgL).each(function(){
+                $(this).stop(true).animate({"left" : ($(this).index()) * 80}, 1000)
+            })
+	        	 $(imgR).each(function(){
+				 $(this).stop(true).animate({"left" : ($(this).index()+5) * 80}, 1000)
+				 })
+				 });
+            })
+		     $("li").each(function(){
+			 $(this).mouseleave(function(){
+			 $("li").each(function(){
+			 $(this).stop(true).animate({"left" : ($(this).index())*150}, 1000);
+			 })
+			 });
+})
+	</script>
+</html>
